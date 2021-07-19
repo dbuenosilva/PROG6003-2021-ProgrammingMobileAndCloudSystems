@@ -1,0 +1,62 @@
+<h1>We can use HTML in the file.html and set up in the template</h1>
+
+<p [class.class1]="message">{{message}}</p>
+
+
+<!-- <img src={{imgSrc}}> -->
+
+
+
+<form>
+                                 <!-- two way binding           it can be any name here  -->
+  <input #textfield1="ngModel" type="text" [(ngModel)]="message2" name="text1"  /> 
+
+   <!-- one way binding  
+ value=(sendFromViewToBackEnd) 
+ value=[sendingFromBackEndToView]
+   -->
+
+
+  <!-- hidden the message2 when isShown is false on app.component  -->
+<p *ngIF="isShown"> {{message2}}</p> 
+
+<br>
+
+ <!-- reference variable  -->
+<p>{{textfield1.value}}</p>
+
+ <!-- reference variable  -->
+ <p>{{textfield1.touched}}</p>
+
+
+</form>
+
+
+ <form>
+
+<label *ngFor="let col of colours">{{col}}
+                              <!-- need to be binding -->
+<input id="rb1" type="radio" [value]="col" [(ngModel)]="selectedColour" name="rb1"/>
+
+</label>
+
+<br>
+
+  <select [(ngModel)]="selectedColour" name="sel1" (change)="itemChanged(selectedColour)" >
+  
+  <option *ngFor="let col of colours, let i = index" [value]="i">{{col}}</option> 
+
+  </select>
+
+  <p>User selected color by selectedColour variable is: {{selectedColour}} </p>
+  <p>User selected color by userSelection variable is: {{userSelection}} </p>
+ 
+  <br><br><br>
+
+  <p [ngClass]="{'class1': cv1, 'class2': cv2}">Testing how to change the text </p>
+
+  <input type="button" (click)="changeText()" value="Click">
+
+
+  </form>
+  
